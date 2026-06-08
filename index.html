@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Dashboard Overtime</title>
+    <link rel="stylesheet" href="./style.css">
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dashboard Driver Overtime</title>
+
+<link rel="stylesheet" href="style.css">
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+</head>
+
+<body>
+
+<div class="dashboard">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="logo-box">
+      <img src="https://i.postimg.cc/NMRDPgT5/GS-dispacer.jpg/120x80" alt="">
+    </div>
+<button id="fullscreenBtn" class="fullscreen-btn">
+  ⛶
+</button>
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Aang Septiansyah')">
+  <img src="https://i.postimg.cc/vTbR0LzW/aang-s.jpg">
+  <span>Aang Septiansyah</span>
+</div>
+    
+    <div class="driver-card"
+    onclick="loadDriverDashboard('Ade Trio Saputra')">
+  <img src="https://i.postimg.cc/D02DrfvH/ade-trio.jpg">
+  <span>Ade Trio Saputra</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Ahmad Safii')">
+  <img src="https://i.postimg.cc/1XCWDpYD/safei.jpg">
+  <span>Ahmad Safii</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Andi Susilo')">
+  <img src="https://i.postimg.cc/44LwLQBJ/andi-susilo.jpg">
+  <span>Andi Susilo</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Andrian Abel Pratama')">
+  <img src="https://i.postimg.cc/Mp9mzknx/abel.jpg">
+  <span>Andrian Abel Pratama</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Bayu Hermansyah')">
+  <img src="https://i.postimg.cc/Kv379S1D/bayu-24.jpg">
+  <span>Bayu Hermansyah</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Cristiandi Saputra')">
+  <img src="https://i.postimg.cc/bNnbxx5T/cristian.jpg">
+  <span>Cristiandi Saputra</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Deden krishna')">
+  <img src="https://i.postimg.cc/brxgLFz5/image.jpg?">
+  <span>Deden krishna</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Dedi Kurniawan.')">
+  <img src="https://i.postimg.cc/X751DDqw/dedi-kurni.jpg">
+  <span>Dedi Kurniawan.</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Dimas Anggriawan')">
+  <img src="https://i.postimg.cc/P5hyVXB8/dimas-27.jpg">
+  <span>Dimas Anggriawan</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Dimas Kurnia Pamungkas')">
+  <img src="https://i.postimg.cc/PJWZ1ZfJ/dimas-kaco.jpg">
+  <span>Dimas Kurnia Pamungkas</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Dody Friady')">
+  <img src="https://i.postimg.cc/1XQVRt06/Dodi.jpg">
+  <span>Dody Friady</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Edo Irfan Nugraha')">
+  <img src="https://i.postimg.cc/rFVGvYKz/Edo.jpg">
+  <span>Edo Irfan Nugraha</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Eggi Fradana')">
+  <img src="https://i.postimg.cc/BbpbqCQy/egi.jpg">
+  <span>Eggi Fradana</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Gusef Riadi')">
+  <img src="https://i.postimg.cc/d0C07FV8/gilo.jpg">
+  <span>Gusef Riadi</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Hafid')">
+  <img src="https://i.postimg.cc/nhyFfWG8/hapit.jpg">
+  <span>Hafid</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Hamdani')">
+  <img src="https://i.postimg.cc/0yDgDy7z/hamdani.jpg">
+  <span>Hamdani</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Hari Bowo')">
+  <img src="https://i.postimg.cc/0QNHWkKZ/hari.jpg">
+  <span>Hari Bowo</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Ilham Kholik')">
+  <img src="https://i.postimg.cc/HLSCsPQM/ilham.jpg">
+  <span>Ilham Kholik</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Kodin')">
+  <img src="https://i.postimg.cc/76CjPPHF/Kodin.jpg">
+  <span>Kodin</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Kuswara')">
+  <img src="https://i.postimg.cc/PqJRKfwM/kuswara.jpg">
+  <span>Kuswara</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Latif')">
+  <img src="https://i.postimg.cc/FHRpXWsT/latif.jpg">
+  <span>Latif</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Riko fristian')">
+  <img src="https://i.postimg.cc/mr4Q2mbL/riko.jpg">
+  <span>Riko fristian</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Muhammad Rivaldi')">
+  <img src="https://i.postimg.cc/0yFYR94J/rivaldi.jpg">
+  <span>Muhammad Rivaldi</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Niko Nirwana')">
+  <img src="https://i.postimg.cc/503Q0Jsv/niko.jpg">
+  <span>Niko Nirwana</span>
+</div>
+       
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Nur Fatonah')">
+  <img src="https://i.postimg.cc/ZnWYSz2v/fatonah.jpg">
+  <span>Nur Fatonah</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Nurhidayattullah')">
+  <img src="https://i.postimg.cc/Prtbj35d/Nur.jpg">
+  <span>Nurhidayattullah</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Oki')">
+  <img src="https://i.postimg.cc/d1LDqCTK/oki.jpg">
+  <span>Oki</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Primulyadi')">
+  <img src="https://i.postimg.cc/4ypfdQfF/pri.jpg">
+  <span>Primulyadi</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Ravi Anggara')">
+  <img src="https://i.postimg.cc/mgtny2M2/ravi.jpg">
+  <span>Ravi Anggara</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Rahmat Syukur Pratama')">
+  <img src="https://i.postimg.cc/brxgLFz5/image.jpg">
+  <span>Rahmat Syukur Pratama</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Restu Satrio')">
+  <img src="https://i.postimg.cc/zfT0xLfv/restu.jpg">
+  <span>Restu Satrio</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Reza Kurniadi')">
+  <img src="https://i.postimg.cc/43vQzr8P/reza.jpg">
+  <span>Reza Kurniadi</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Said Ahmad Taufik')">
+  <img src="https://i.postimg.cc/vZrVj55K/said.jpg">
+  <span>Said Ahmad Taufik</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Sandro')">
+  <img src="https://i.postimg.cc/BbFTnk18/sandor.jpg">
+  <span>Sandro</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Suryadi')">
+  <img src="https://i.postimg.cc/c4NYcDnD/suryadi.jpg">
+  <span>Suryadi</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Taufik Hidayat')">
+  <img src="https://i.postimg.cc/D0QSDTX1/topik.jpg">
+  <span>Taufik Hidayat</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Trisnanto')">
+  <img src="https://i.postimg.cc/3xNwjpny/tris.jpg">
+  <span>Trisnanto</span>
+</div>
+    
+     <div class="driver-card"
+     onclick="loadDriverDashboard('Usman Deva')">
+  <img src="https://i.postimg.cc/YSgM8xgz/usman.jpg">
+  <span>Usman Deva</span>
+</div>
+    
+     <div class="driver-card"
+     onclick="loadDriverDashboard('Trisnanto')">
+  <img src="https://i.postimg.cc/Dy8VBg3b/wahyu.jpg">
+  <span>Wahyu Ilham</span>
+</div>
+    
+     <div class="driver-card"
+     onclick="loadDriverDashboard('Wilfridus Krisna Priadika')">
+  <img src="https://i.postimg.cc/J7HvXhNG/will.jpg">
+  <span>Wilfridus Krisna Priadika</span>
+</div>
+    
+     <div class="driver-card"
+     onclick="loadDriverDashboard('Audi muhar sakti')">
+  <img src="https://i.postimg.cc/X73LvNxz/audi.jpg">
+  <span>Audi muhar sakti</span>
+</div>
+    
+     <div class="driver-card"
+     onclick="loadDriverDashboard('Andika saputra')">
+  <img src="https://i.postimg.cc/Mp699ZQd/andi.jpg">
+  <span>Andika saputra</span>
+</div>
+    
+     <div class="driver-card"
+     onclick="loadDriverDashboard('Aris Saputra')">
+  <img src="https://i.postimg.cc/Twbr0BYM/aris.jpg">
+  <span>Aris Saputra</span>
+</div>
+    
+     <div class="driver-card"
+     onclick="loadDriverDashboard('Ade Lutfi')">
+  <img src="https://i.postimg.cc/j5y7PNZW/ade.jpg">
+  <span>Ade Lutfi</span>
+</div>
+    
+     <div class="driver-card"
+     onclick="loadDriverDashboard('Adi Subroto')">
+  <img src="https://i.postimg.cc/vZmfk4Hk/adi-subro.jpg">
+  <span>Adi Subroto</span>
+</div>
+    
+     <div class="driver-card"
+     onclick="loadDriverDashboard('Ardiansyah')">
+  <img src="https://i.postimg.cc/XNwfCMzF/ardi.jpg">
+  <span>Ardiansyah</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Dedi kurniawan')">
+  <img src="https://i.postimg.cc/PqPbpPgN/dedi.jpg">
+  <span>Dedi kurniawan</span>
+</div>
+ 
+     <div class="driver-card"
+     onclick="loadDriverDashboard('Edi Nofrizal')">
+  <img src="https://i.postimg.cc/J4559w38/encot.jpg">
+  <span>Edi Nofrizal</span>
+</div>
+    
+     <div class="driver-card"
+     onclick="loadDriverDashboard('Febri Yenita Pratama')">
+  <img src="https://i.postimg.cc/44t5QHmK/febri.jpg">
+  <span>Febri Yenita Pratama</span>
+</div>
+    
+     <div class="driver-card"
+     onclick="loadDriverDashboard('Hendra Saputra')">
+  <img src="https://i.postimg.cc/QCLqrhnZ/hendra.jpg">
+  <span>Hendra Saputra</span>
+</div>
+    
+     <div class="driver-card"
+     onclick="loadDriverDashboard('Iman Surya Priyatna')">
+  <img src="https://i.postimg.cc/wjFFsK3W/iman.jpg">
+  <span>Iman Surya Priyatna</span>
+</div>
+    
+     <div class="driver-card"
+     onclick="loadDriverDashboard('Irwanto')">
+  <img src="https://i.postimg.cc/sDYTsGzx/irwanto.jpg">
+  <span>Irwanto</span>
+</div>
+    
+     <div class="driver-card"
+     onclick="loadDriverDashboard('Juniyanto')">
+  <img src="https://i.postimg.cc/3NpnydDG/aleng.jpg">
+  <span>Juniyanto</span>
+</div>
+    
+     <div class="driver-card"
+     onclick="loadDriverDashboard('Madelian Herianto')">
+  <img src="https://i.postimg.cc/59ZrxMFQ/made.jpg">
+  <span>Madelian Herianto</span>
+</div>
+    
+     <div class="driver-card"
+     onclick="loadDriverDashboard('M Ridwan')">
+  <img src="https://i.postimg.cc/fRsg9jCd/ridwan.jpg">
+  <span>M Ridwan</span>
+</div>
+    
+     <div class="driver-card"
+     onclick="loadDriverDashboard('M Hafiz')">
+  <img src="https://i.postimg.cc/rmDhkhVQ/hafiz.jpg">
+  <span>M Hafiz</span>
+</div>
+    
+     <div class="driver-card"
+     onclick="loadDriverDashboard('May Yudi Supratman')">
+  <img src="https://i.postimg.cc/tTJ3678R/mayudi.jpg">
+  <span>May Yudi Supratman</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Rendy Septirianto')">
+  <img src="https://i.postimg.cc/cJsMsFmJ/rendi.jpg">
+  <span>Rendy Septirianto</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Rizkho Fadjar Mulyawan')">
+  <img src="https://i.postimg.cc/DyXc5J01/rizko.jpg">
+  <span>Rizkho Fadjar Mulyawan</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Satri Mulyanak S')">
+  <img src="https://i.postimg.cc/DZpcp11g/satri.jpg">
+  <span>Satri Mulyanak S</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Satria Ariansyah')">
+  <img src="https://i.postimg.cc/s2yKMjVP/satria.jpg">
+  <span>Satria Ariansyah</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Suyadi')">
+  <img src="https://i.postimg.cc/yYMLzhtt/yadi.jpg">
+  <span>Suyadi</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Syafarudin')">
+  <img src="https://i.postimg.cc/Nf9dVCJq/safar.jpg">
+  <span>Syafarudin</span>
+</div>
+    
+    <div class="driver-card"
+     onclick="loadDriverDashboard('Tri Darsa Saputra')">
+  <img src="https://i.postimg.cc/PxS6GgnQ/darsak.jpg">
+  <span>Tri Darsa Saputra</span>
+</div>
+    
+   
+
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="content">
+
+   <!-- FILTER -->
+<section class="panel filter-panel">
+  <h3>Biodata & Filter Data</h3>
+
+  <div class="filter-content">
+
+    <!-- BOX FOTO 3x4 -->
+    <div class="photo-box">
+  <img
+    id="driverPhoto"
+    src="https://i.postimg.cc/NMRDPgT5/GS-dispacer.jpg/120x80"
+    alt="Driver"
+    style="
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      border-radius:8px;
+    "
+  >
+</div>
+
+    <!-- BOX BIODATA -->
+    <div class="biodata-box">
+
+      <div class="biodata-row">
+        <span class="label">Nama Driver</span>
+        <span class="value" id="driverName">-</span>
+      </div>
+
+      <div class="biodata-row">
+        <span class="label">No Badge</span>
+        <span class="value" id="driverBadge">-</span>
+      </div>
+
+      <div class="biodata-row">
+        <span class="label">Fleet Code</span>
+        <span class="value" id="fleetCode">-</span>
+      </div>
+
+      <div class="biodata-row">
+        <span class="label">Lokasi</span>
+        <span class="value" id="driverLocation">-</span>
+      </div>
+
+    </div>
+
+    <!-- FILTER TANGGAL -->
+    <div class="filter-date-box">
+
+      <div class="date-range">
+        <div class="date-item">
+          <label>Start Date</label>
+          <input type="date" id="startDate">
+        </div>
+
+        <div class="date-separator">s/d</div>
+
+        <div class="date-item">
+          <label>End Date</label>
+          <input type="date" id="endDate">
+        </div>
+      </div>
+
+      <div class="filter-actions">
+        <button id="filterBtn">Filter</button>
+        <button id="resetBtn">Reset</button>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+    
+   <section class="panel chart-jamkerja">
+  <h3>Chart Total Jam Kerja</h3>
+
+  <div class="jamkerja-scroll">
+    <div id="jamKerjaChart"></div>
+  </div>
+</section>
+
+   <!-- CARD KANAN -->
+<div class="right-panel">
+
+  <!-- TOTAL JAM KERJA -->
+  <section class="panel total-kerja">
+    <h3>Total Jam Kerja</h3>
+
+    <table class="summary-table">
+      <thead>
+        <tr>
+          <th>Nama</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody id="jamKerjaBody"></tbody>
+    </table>
+  </section>
+
+  <!-- TOTAL JAM LEMBUR -->
+  <section class="panel total-lembur">
+    <h3>Total Jam Lembur</h3>
+
+    <table class="summary-table">
+      <thead>
+        <tr>
+          <th>Nama</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody id="jamLemburBody"></tbody>
+    </table>
+  </section>
+
+  <!-- TOTAL KONVERSI -->
+  <section class="panel total-konversi">
+    <h3>Total Konversi Lembur</h3>
+
+    <table class="summary-table">
+      <thead>
+        <tr>
+          <th>Nama</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody id="konversiBody"></tbody>
+    </table>
+  </section>
+
+  <!-- TOTAL DINAS LUAR -->
+  <section class="panel total-dinas">
+    <h3>Total Dinas Luar</h3>
+
+    <table class="summary-table">
+      <thead>
+        <tr>
+          <th>Nama</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody id="dinasBody"></tbody>
+    </table>
+  </section>
+
+</div>
+    <!-- CHART LEMBUR -->
+    <section class="panel chart-lembur">
+  <h3>Chart Total Jam Lembur</h3>
+
+  <div class="chart-scroll">
+    <canvas id="jamLemburChart"></canvas>
+  </div>
+</section>
+
+    
+   <!-- CHART KONVERSI -->
+<section class="panel chart-konversi">
+  <h3>Chart Total Konversi Lembur</h3>
+  <canvas id="konversiChart"></canvas>
+</section>
+
+    <section class="panel table-panel">
+  <h3>Table Harian</h3>
+
+  <div class="table-container">
+
+    <table class="daily-table">
+
+      <thead>
+        <tr>
+          <th>Nama Driver</th>
+          <th>Tanggal</th>
+          <th>Hari</th>
+          <th>Jam Kerja</th>
+          <th>Jam Lembur</th>
+          <th>Hasil Lembur</th>
+          <th>Jam Awal 1</th>
+          <th>Jam Akhir 1</th>
+          <th>Jam Awal 2</th>
+          <th>Jam Akhir 2</th>
+          <th>Jam Awal 3</th>
+          <th>Jam Akhir 3</th>
+          <th>Jam Awal 4</th>
+          <th>Jam Akhir 4</th>
+          <th>Jam Pertama</th>
+          <th>Jam Kedua</th>
+          <th>Jam Ketiga</th>
+          <th>Jam Keempat</th>
+          <th>Keterangan</th>
+         
+        </tr>
+      </thead>
+
+      <tbody id="tableBody">
+      </tbody>
+
+    </table>
+
+  </div>
+</section>
+  </main>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
+    <script  src="./script.js"></script>
+
+  </body>
+  
+</html>

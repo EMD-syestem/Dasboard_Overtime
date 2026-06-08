@@ -790,7 +790,7 @@ function loadTableFromData(data) {
       <td>${formatTanggal(row[1])}</td>
       <td>${row[2] || ""}</td>
       <td>${row[3] || ""}</td>
-      <td>${formatJam(row[4])}</td>
+      <td>${row[4] || ""}</td>
       <td>${row[5] || ""}</td>
       <td>${formatJam(row[6])}</td>
       <td>${formatJam(row[7])}</td>

@@ -35,7 +35,7 @@ body{
 }
 
 .sidebar{
-  width:170px;
+  width:230px;
   flex-shrink:0;
 
   background:linear-gradient(
@@ -50,10 +50,6 @@ body{
 
   overflow-y:auto;
   overflow-x:hidden;
-
-  /* Firefox */
-  scrollbar-width: thin;
-  scrollbar-color: #2d66b2 #88d8ea;
 }
 
 .content{
@@ -98,61 +94,65 @@ body{
   display:flex;
   align-items:center;
   gap:10px;
-  background:#bcecf7;
-  border:1px solid #4c90b5;
-  margin-bottom:18px;
-  padding:10px;
-  box-shadow:2px 2px 5px rgba(0,0,0,.2);
-}
 
-.driver-card{
-  display:flex;
-  align-items:center;
-  gap:12px;
-
-  padding:10px;
-  margin-bottom:8px;
+  padding:6px 8px;
+  margin-bottom:6px;
 
   background:#fff;
-  border-radius:12px;
+  border-radius:10px;
 
   cursor:pointer;
-  transition:0.3s;
+  transition:.2s;
 
-  box-shadow:
-    0 2px 8px rgba(0,0,0,.08);
-}
-
-.driver-card:hover{
-  transform:translateY(-2px);
-
-  box-shadow:
-    0 4px 12px rgba(0,0,0,.15);
+  box-shadow:0 2px 6px rgba(0,0,0,.08);
 }
 
 .driver-card img{
-  width:40px;
-  height:50px;
-
+  width:38px;
+  height:38px;
   border-radius:50%;
   object-fit:cover;
-
-  border:2px solid #1e88e5;
-
   flex-shrink:0;
 }
 
 .driver-card span{
   font-size:13px;
   font-weight:600;
-  color:#333;
-
-  white-space:normal;
-  word-break:break-word;
-  line-height:1.3;
-
-  flex:1;
+  line-height:1.2;
 }
+
+.search-driver{
+  margin-bottom:8px;
+  padding:0;
+}
+
+.search-driver input{
+  width:100%;
+  height:32px;
+
+  padding:0 10px;
+
+  border:1px solid #cfd8dc;
+  border-radius:8px;
+
+  background:#fff;
+
+  font-size:12px;
+
+  outline:none;
+  transition:.2s;
+}
+
+.search-driver input::placeholder{
+  color:#999;
+  font-size:12px;
+}
+
+.search-driver input:focus{
+  border-color:#1e88e5;
+  box-shadow:0 0 0 2px rgba(30,136,229,.15);
+}
+
 /* ==========================
    CONTENT
 ========================== */

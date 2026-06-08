@@ -790,7 +790,7 @@ function loadTableFromData(data) {
       <td>${formatTanggal(row[1])}</td>
       <td>${row[2] || ""}</td>
       <td>${row[3] || ""}</td>
-      <td>${row[4] || ""}</td>
+     <td>${row[4] || ""}</td>
       <td>${row[5] || ""}</td>
       <td>${formatJam(row[6])}</td>
       <td>${formatJam(row[7])}</td>
@@ -997,3 +997,26 @@ document.addEventListener("fullscreenchange", () => {
   }
 
 });
+
+function searchDriver() {
+  const keyword =
+    document.getElementById("driverSearch")
+      .value
+      .toLowerCase();
+
+  const drivers =
+    document.querySelectorAll(".driver-card");
+
+  drivers.forEach(driver => {
+    const name =
+      driver.querySelector("span")
+        .textContent
+        .toLowerCase();
+
+    if (name.includes(keyword)) {
+      driver.style.display = "flex";
+    } else {
+      driver.style.display = "none";
+    }
+  });
+}

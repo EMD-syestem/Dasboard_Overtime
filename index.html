@@ -1,4 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
 
+  <head>
+    <meta charset="UTF-8">
+    <title>Dashboard Overtime</title>
+    <link rel="stylesheet" href="./style.css">
+
+  </head>
+    
+  <body>
   <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -6,14 +16,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Dashboard Driver Overtime</title>
-
-   <!-- ✅ Favicon untuk Browser, Mobile, dan Desktop -->
-  <link rel="icon" type="image/png" sizes="16x16" href="https://i.postimg.cc/NMRDPgT5/GS-dispacer.jpg">
-  <link rel="icon" type="image/png" sizes="32x32" href="https://i.postimg.cc/NMRDPgT5/GS-dispacer.jpg">
-  <link rel="icon" type="image/png" sizes="48x48" href="https://i.postimg.cc/NMRDPgT5/GS-dispacer.jpg">
-  <link rel="icon" type="image/png" sizes="64x64" href="https://i.postimg.cc/NMRDPgT5/GS-dispacer.jpg">
-  <link rel="icon" type="image/png" sizes="180x180" href="https://i.postimg.cc/NMRDPgT5/GS-dispacer.jpg">
-  <link rel="shortcut icon" href="https://i.postimg.cc/NMRDPgT5/GS-dispacer.jpg" type="image/png">
 
 <link rel="stylesheet" href="style.css">
   <script src="https://code.highcharts.com/highcharts.js"></script>
@@ -36,6 +38,16 @@
 <button id="fullscreenBtn" class="fullscreen-btn">
   ⛶
 </button>
+    
+    <div class="search-driver">
+  <input
+    type="text"
+    id="driverSearch"
+    placeholder="Cari driver..."
+    onkeyup="searchDriver()"
+  >
+</div>
+    
     <div class="driver-card"
      onclick="loadDriverDashboard('Aang Septiansyah')">
   <img src="https://i.postimg.cc/vTbR0LzW/aang-s.jpg">

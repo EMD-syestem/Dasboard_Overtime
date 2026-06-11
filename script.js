@@ -863,10 +863,6 @@ function applyFilter() {
   loadTotalKonversiLembur();
 }
 /* ================= FILTER BUTTON ================= */
-document.getElementById("filterBtn").addEventListener("click", () => {
-  applyFilter();
-});
-
 document.getElementById("resetBtn").addEventListener("click", () => {
   // reset filter tanggal
   document.getElementById("startDate").value = "";
@@ -880,6 +876,7 @@ document.getElementById("resetBtn").addEventListener("click", () => {
   document.getElementById("driverBadge").textContent = "-";
   document.getElementById("fleetCode").textContent = "-";
   document.getElementById("driverLocation").textContent = "-";
+  document.getElementById("driverDepartement").textContent = "-";
 
   // reset foto
   document.getElementById("driverPhoto").src =
@@ -894,7 +891,6 @@ document.getElementById("resetBtn").addEventListener("click", () => {
   loadTotalKonversiLembur();
   loadTotalDinasLuar();
 });
-
 /* ================= LOAD TABLE ORIGINAL ================= */
 function loadTable() {
   const roleParam = currentGroup === "all" ? "" : `&role=${currentGroup}`;

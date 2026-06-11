@@ -366,6 +366,52 @@ body{
   transform: translateY(-1px);
 }
 
+.driver-group-buttons{
+  display:flex;
+  gap:8px;
+  margin-top:10px;
+  justify-content:center;
+}
+
+.group-btn{
+  min-width:90px;
+  padding:8px 14px;
+  border:none;
+  border-radius:8px;
+  color:#fff;
+  font-size:13px;
+  font-weight:600;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.group-btn:hover{
+  transform:translateY(-2px);
+}
+
+.all-btn{
+  background:linear-gradient(
+    135deg,
+    #64748b,
+    #475569
+  );
+}
+
+.field-btn{
+  background:linear-gradient(
+    135deg,
+    #2563eb,
+    #1d4ed8
+  );
+}
+
+.zona-btn{
+  background:linear-gradient(
+    135deg,
+    #10b981,
+    #059669
+  );
+}
 /* =========================
    MOBILE
 ========================= */
@@ -786,3 +832,5 @@ td{
     #88d8ea,
     #42b8db
   );
+  
+ 

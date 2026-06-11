@@ -1,4 +1,5 @@
 let allData = [];
+let currentGroup = "all";
 
 function parseTanggal(val) {
   if (val === null || val === undefined || val === "") return null;
@@ -173,8 +174,10 @@ function drawJamKerjaChart(map) {
 }
 
 function loadTotalJamKerja() {
+  const roleParam = currentGroup === "all" ? "" : `&role=${currentGroup}`;
+
   fetch(
-    "https://script.google.com/macros/s/AKfycbxo_XzunHS3-7f959z3zlpCXtyAt-koWb2KSm8OiMGtVIc9Nv08t_0xUOhSGAVs9eMF/exec?action=read"
+    `https://script.google.com/macros/s/AKfycbwIVSGk_UTCda3kZbwTlGpAITka0rxTZeGu_W0kh0kA9AV7Oup32sYmqau52_7njRJ4/exec?action=read${roleParam}`
   )
     .then((res) => res.json())
     .then((data) => {
@@ -235,8 +238,10 @@ function loadTotalJamKerja() {
 document.addEventListener("DOMContentLoaded", loadTotalJamKerja);
 
 function loadTotalJamLembur() {
+  const roleParam = currentGroup === "all" ? "" : `&role=${currentGroup}`;
+
   fetch(
-    "https://script.google.com/macros/s/AKfycbxo_XzunHS3-7f959z3zlpCXtyAt-koWb2KSm8OiMGtVIc9Nv08t_0xUOhSGAVs9eMF/exec?action=read"
+    `https://script.google.com/macros/s/AKfycbwIVSGk_UTCda3kZbwTlGpAITka0rxTZeGu_W0kh0kA9AV7Oup32sYmqau52_7njRJ4/exec?action=read${roleParam}`
   )
     .then((res) => res.json())
     .then((data) => {
@@ -409,8 +414,10 @@ document.addEventListener("DOMContentLoaded", () => {
   loadTotalJamLembur();
 });
 function loadTotalKonversi() {
+  const roleParam = currentGroup === "all" ? "" : `&role=${currentGroup}`;
+
   fetch(
-    "https://script.google.com/macros/s/AKfycbxo_XzunHS3-7f959z3zlpCXtyAt-koWb2KSm8OiMGtVIc9Nv08t_0xUOhSGAVs9eMF/exec?action=read"
+    `https://script.google.com/macros/s/AKfycbwIVSGk_UTCda3kZbwTlGpAITka0rxTZeGu_W0kh0kA9AV7Oup32sYmqau52_7njRJ4/exec?action=read${roleParam}`
   )
     .then((res) => res.json())
     .then((data) => {
@@ -482,8 +489,10 @@ document.getElementById("filterBtn").addEventListener("click", () => {
 document.addEventListener("DOMContentLoaded", loadTotalKonversi);
 
 function loadTotalDinasLuar() {
+  const roleParam = currentGroup === "all" ? "" : `&role=${currentGroup}`;
+
   fetch(
-    "https://script.google.com/macros/s/AKfycbxo_XzunHS3-7f959z3zlpCXtyAt-koWb2KSm8OiMGtVIc9Nv08t_0xUOhSGAVs9eMF/exec?action=readDinasLuar"
+    `https://script.google.com/macros/s/AKfycbwIVSGk_UTCda3kZbwTlGpAITka0rxTZeGu_W0kh0kA9AV7Oup32sYmqau52_7njRJ4/exec?action=readDinasLuar${roleParam}`
   )
     .then((res) => {
       if (!res.ok) {
@@ -492,6 +501,7 @@ function loadTotalDinasLuar() {
 
       return res.json();
     })
+
     .then((data) => {
       data = filterByDate(data);
 
@@ -567,8 +577,10 @@ function loadTotalDinasLuar() {
 }
 
 function loadTotalKonversiLembur() {
+  const roleParam = currentGroup === "all" ? "" : `&role=${currentGroup}`;
+
   fetch(
-    "https://script.google.com/macros/s/AKfycbxo_XzunHS3-7f959z3zlpCXtyAt-koWb2KSm8OiMGtVIc9Nv08t_0xUOhSGAVs9eMF/exec?action=read"
+    `https://script.google.com/macros/s/AKfycbwIVSGk_UTCda3kZbwTlGpAITka0rxTZeGu_W0kh0kA9AV7Oup32sYmqau52_7njRJ4/exec?action=read${roleParam}`
   )
     .then((res) => res.json())
     .then((data) => {
@@ -813,7 +825,7 @@ function loadTableFromData(data) {
 
 function loadAllData() {
   fetch(
-    "https://script.google.com/macros/s/AKfycbxo_XzunHS3-7f959z3zlpCXtyAt-koWb2KSm8OiMGtVIc9Nv08t_0xUOhSGAVs9eMF/exec?action=read"
+    "https://script.google.com/macros/s/AKfycbwIVSGk_UTCda3kZbwTlGpAITka0rxTZeGu_W0kh0kA9AV7Oup32sYmqau52_7njRJ4/exec?action=read"
   )
     .then((res) => res.json())
     .then((data) => {
@@ -885,25 +897,27 @@ document.getElementById("resetBtn").addEventListener("click", () => {
 
 /* ================= LOAD TABLE ORIGINAL ================= */
 function loadTable() {
+  const roleParam = currentGroup === "all" ? "" : `&role=${currentGroup}`;
+
   fetch(
-    "https://script.google.com/macros/s/AKfycbxo_XzunHS3-7f959z3zlpCXtyAt-koWb2KSm8OiMGtVIc9Nv08t_0xUOhSGAVs9eMF/exec?action=read"
+    `https://script.google.com/macros/s/AKfycbwIVSGk_UTCda3kZbwTlGpAITka0rxTZeGu_W0kh0kA9AV7Oup32sYmqau52_7njRJ4/exec?action=read${roleParam}`
   )
     .then((res) => res.json())
     .then((data) => {
       allData = data;
 
-      loadTableFromData(allData);
+      // tetap mendukung filter tanggal dan driver
+      applyFilter();
     })
     .catch((err) => {
       console.log("Gagal mengambil data:", err);
     });
 }
-
 /* ================= INIT ================= */
 document.addEventListener("DOMContentLoaded", loadTable);
 
 const API_URL =
-  "https://script.google.com/macros/s/AKfycbxo_XzunHS3-7f959z3zlpCXtyAt-koWb2KSm8OiMGtVIc9Nv08t_0xUOhSGAVs9eMF/exec";
+  "https://script.google.com/macros/s/AKfycbwIVSGk_UTCda3kZbwTlGpAITka0rxTZeGu_W0kh0kA9AV7Oup32sYmqau52_7njRJ4/exec";
 
 let biodataCache = [];
 
@@ -937,8 +951,12 @@ function loadDriverBiodata(driverName) {
   document.getElementById("fleetCode").textContent = driver.fleet;
 
   document.getElementById("driverLocation").textContent = driver.lokasi;
+  
+   document.getElementById("driverDepartement").textContent =
+  driver.departement || "-";
 
   document.getElementById("driverPhoto").src = driver.photo;
+  
 }
 let selectedDriver = null;
 
@@ -959,59 +977,35 @@ function loadDriverDashboard(driverName) {
   loadTotalKonversi();
   loadTotalKonversiLembur();
 }
-const fullscreenBtn =
-document.getElementById("fullscreenBtn");
+const fullscreenBtn = document.getElementById("fullscreenBtn");
 
 fullscreenBtn.addEventListener("click", async () => {
-
   try {
-
     if (!document.fullscreenElement) {
-
       await document.documentElement.requestFullscreen();
-
     } else {
-
       await document.exitFullscreen();
-
     }
-
-  } catch(err) {
-
+  } catch (err) {
     console.log(err);
-
   }
-
 });
 
 document.addEventListener("fullscreenchange", () => {
-
   if (document.fullscreenElement) {
-
     fullscreenBtn.innerHTML = "💻";
-
   } else {
-
     fullscreenBtn.innerHTML = "⛶";
-
   }
-
 });
 
 function searchDriver() {
-  const keyword =
-    document.getElementById("driverSearch")
-      .value
-      .toLowerCase();
+  const keyword = document.getElementById("driverSearch").value.toLowerCase();
 
-  const drivers =
-    document.querySelectorAll(".driver-card");
+  const drivers = document.querySelectorAll(".driver-card");
 
-  drivers.forEach(driver => {
-    const name =
-      driver.querySelector("span")
-        .textContent
-        .toLowerCase();
+  drivers.forEach((driver) => {
+    const name = driver.querySelector("span").textContent.toLowerCase();
 
     if (name.includes(keyword)) {
       driver.style.display = "flex";
@@ -1019,4 +1013,32 @@ function searchDriver() {
       driver.style.display = "none";
     }
   });
+}
+
+function showAllDrivers() {
+  currentGroup = "all";
+
+  selectedDriver = null;
+
+  loadTable();
+
+  loadTotalJamKerja();
+  loadTotalJamLembur();
+  loadTotalKonversi();
+  loadTotalKonversiLembur();
+  loadTotalDinasLuar();
+}
+
+function filterDriverGroup(group) {
+  currentGroup = group;
+
+  selectedDriver = null;
+
+  loadTable();
+
+  loadTotalJamKerja();
+  loadTotalJamLembur();
+  loadTotalKonversi();
+  loadTotalKonversiLembur();
+  loadTotalDinasLuar();
 }

@@ -47,12 +47,24 @@ function drawJamKerjaChart(map) {
   const categories = [];
   const values = [];
 
-  Object.entries(map)
-    .sort((a, b) => b[1] - a[1])
-    .forEach(([nama, total]) => {
-      categories.push(nama);
-      values.push(total);
-    });
+  const entries = selectedDriver
+    ? Object.entries(map).sort((a, b) => {
+        const [da, ma, ya] = a[0].split("/");
+        const [db, mb, yb] = b[0].split("/");
+
+        return new Date(ya, ma - 1, da) - new Date(yb, mb - 1, db);
+      })
+    : Object.entries(map).sort((a, b) => b[1] - a[1]);
+
+  entries.forEach(([nama, total]) => {
+    categories.push(nama);
+    values.push(total);
+  });
+
+  document.getElementById("jamKerjaHeader").textContent = selectedDriver
+    ? `Chart Jam Kerja Harian - ${selectedDriver}`
+    : "Chart Total Jam Kerja";
+
   setTimeout(() => {
     const s = document.querySelector(
       "#jamKerjaChart .highcharts-scrolling-parent"
@@ -69,11 +81,15 @@ function drawJamKerjaChart(map) {
   const container = document.getElementById("jamKerjaChart");
 
   const chartWidth = Math.max(
-    categories.length * 90,
+    categories.length * 65,
     container.parentElement.clientWidth
   );
 
   container.style.width = chartWidth + "px";
+
+  console.log("categories =", categories.length);
+  console.log("chartWidth =", chartWidth);
+  console.log("container width =", container.clientWidth);
 
   Highcharts.chart("jamKerjaChart", {
     chart: {
@@ -82,7 +98,7 @@ function drawJamKerjaChart(map) {
 
       marginTop: 15,
       marginBottom: 70,
-      marginLeft: -550,
+      marginLeft: -100,
       marginRight: 20,
 
       options3d: {
@@ -139,14 +155,13 @@ function drawJamKerjaChart(map) {
         }
       }
     },
-
     tooltip: {
       pointFormat: "<b>{point.y:.2f} Jam</b>"
     },
 
     series: [
       {
-        name: "Total Jam Kerja",
+        name: selectedDriver ? "Jam Kerja Harian" : "Total Jam Kerja",
 
         data: values,
 
@@ -193,19 +208,29 @@ function loadTotalJamKerja() {
 
       const map = {};
 
-      data.forEach((row) => {
-        const nama = (row[0] || "").trim();
+      if (selectedDriver) {
+        data.forEach((row) => {
+          const tanggal = parseTanggal(row[1]);
 
-        const jamKerja = parseFloat(row[3]) || 0;
+          const jamKerja = parseFloat(row[3]) || 0;
 
-        if (!nama) return;
+          if (!tanggal) return;
 
-        if (!map[nama]) {
-          map[nama] = 0;
-        }
+          const key = tanggal.toLocaleDateString("id-ID");
 
-        map[nama] += jamKerja;
-      });
+          map[key] = (map[key] || 0) + jamKerja;
+        });
+      } else {
+        data.forEach((row) => {
+          const nama = (row[0] || "").trim();
+
+          const jamKerja = parseFloat(row[3]) || 0;
+
+          if (!nama) return;
+
+          map[nama] = (map[nama] || 0) + jamKerja;
+        });
+      }
 
       // ================= TABEL =================
 
@@ -257,19 +282,41 @@ function loadTotalJamLembur() {
 
       const map = {};
 
-      data.forEach((row) => {
-        const nama = (row[0] || "").trim();
+      if (selectedDriver) {
+        // MODE HARIAN
 
-        const jamLembur = parseFloat(row[4]) || 0;
+        data.forEach((row) => {
+          const tanggal = parseTanggal(row[1]);
 
-        if (!nama) return;
+          const jamLembur = parseFloat(row[3]) || 0;
 
-        if (!map[nama]) {
-          map[nama] = 0;
-        }
+          if (!tanggal) return;
 
-        map[nama] += jamLembur;
-      });
+          const key = tanggal.toLocaleDateString("id-ID");
+
+          if (!map[key]) {
+            map[key] = 0;
+          }
+
+          map[key] += jamLembur;
+        });
+      } else {
+        // MODE TOTAL DRIVER
+
+        data.forEach((row) => {
+          const nama = (row[0] || "").trim();
+
+          const jamLembur = parseFloat(row[3]) || 0;
+
+          if (!nama) return;
+
+          if (!map[nama]) {
+            map[nama] = 0;
+          }
+
+          map[nama] += jamLembur;
+        });
+      }
 
       /* ======================
          TABEL TOTAL LEMBUR
@@ -306,6 +353,10 @@ function loadTotalJamLembur() {
 
       const canvas = document.getElementById("jamLemburChart");
 
+      document.getElementById("jamLemburHeader").textContent = selectedDriver
+        ? `Chart Jam Lembur Harian - ${selectedDriver}`
+        : "Chart Total Jam Lembur";
+
       if (canvas) {
         if (window.jamLemburChartInstance) {
           window.jamLemburChartInstance.destroy();
@@ -315,6 +366,13 @@ function loadTotalJamLembur() {
 
         canvas.width = Math.max(
           labels.length * widthPerDriver,
+          canvas.parentElement.clientWidth
+        );
+
+        const widthPerTanggal = 80;
+
+        canvas.width = Math.max(
+          labels.length * widthPerTanggal,
           canvas.parentElement.clientWidth
         );
 
@@ -433,20 +491,28 @@ function loadTotalKonversi() {
 
       const map = {};
 
-      data.forEach((row) => {
-        const nama = (row[0] || "").trim();
+      if (selectedDriver) {
+        data.forEach((row) => {
+          const tanggal = parseTanggal(row[1]);
+          const konversi = parseFloat(row[5]) || 0;
 
-        const konversi = parseFloat(row[5]) || 0;
+          if (!tanggal) return;
 
-        if (!nama) return;
+          const key = tanggal.toLocaleDateString("id-ID");
 
-        if (!map[nama]) {
-          map[nama] = 0;
-        }
+          map[key] = (map[key] || 0) + konversi;
+        });
+      } else {
+        data.forEach((row) => {
+          const nama = (row[0] || "").trim();
 
-        map[nama] += konversi;
-      });
+          const konversi = parseFloat(row[5]) || 0;
 
+          if (!nama) return;
+
+          map[nama] = (map[nama] || 0) + konversi;
+        });
+      }
       /* ======================
          TABEL
       ====================== */
@@ -596,36 +662,28 @@ function loadTotalKonversiLembur() {
 
       const map = {};
 
-      data.forEach((row) => {
-        const nama = (row[0] || "").trim();
-
-        const konversi = parseFloat(row[5]) || 0;
-
-        if (!nama) return;
-
-        if (!map[nama]) {
-          map[nama] = 0;
-        }
-
-        map[nama] += konversi;
-      });
-
       if (selectedDriver) {
-        data = data.filter(
-          (row) =>
-            (row[0] || "").trim().toLowerCase() ===
-            selectedDriver.trim().toLowerCase()
-        );
-      }
+        data.forEach((row) => {
+          const tanggal = parseTanggal(row[1]);
+          const konversi = parseFloat(row[5]) || 0;
 
-      if (selectedDriver) {
-        data = data.filter(
-          (row) =>
-            (row[0] || "").trim().toLowerCase() ===
-            selectedDriver.trim().toLowerCase()
-        );
-      }
+          if (!tanggal) return;
 
+          const key = tanggal.toLocaleDateString("id-ID");
+
+          map[key] = (map[key] || 0) + konversi;
+        });
+      } else {
+        data.forEach((row) => {
+          const nama = (row[0] || "").trim();
+
+          const konversi = parseFloat(row[5]) || 0;
+
+          if (!nama) return;
+
+          map[nama] = (map[nama] || 0) + konversi;
+        });
+      }
       /* ======================
          SORT DATA
       ====================== */
@@ -634,6 +692,9 @@ function loadTotalKonversiLembur() {
 
       const labels = sorted.map((item) => item[0]);
       const values = sorted.map((item) => Number(item[1].toFixed(1)));
+      document.getElementById("konversiHeader").textContent = selectedDriver
+        ? `Chart Konversi Lembur Harian - ${selectedDriver}`
+        : "Chart Total Konversi Lembur";
 
       /* ======================
          CHART (TIDAK DIUBAH)
@@ -845,7 +906,7 @@ function applyFilter() {
   // Filter tanggal
   filtered = filterByDate(filtered);
 
-  // Filter driver
+  // Filter driver yang dipilih
   if (selectedDriver) {
     filtered = filtered.filter(
       (row) =>
@@ -854,37 +915,48 @@ function applyFilter() {
     );
   }
 
+  // Update tabel harian
   loadTableFromData(filtered);
 
+  // Update seluruh chart
   loadTotalJamKerja();
   loadTotalJamLembur();
   loadTotalKonversi();
   loadTotalDinasLuar();
   loadTotalKonversiLembur();
 }
+
 /* ================= FILTER BUTTON ================= */
+
+document.getElementById("filterBtn").addEventListener("click", () => {
+  applyFilter();
+});
+
+/* ================= RESET BUTTON ================= */
+
 document.getElementById("resetBtn").addEventListener("click", () => {
-  // reset filter tanggal
+  // Reset tanggal
   document.getElementById("startDate").value = "";
   document.getElementById("endDate").value = "";
 
-  // reset driver terpilih
+  // Reset driver
   selectedDriver = null;
 
-  // reset biodata
+  // Reset biodata
   document.getElementById("driverName").textContent = "-";
   document.getElementById("driverBadge").textContent = "-";
   document.getElementById("fleetCode").textContent = "-";
   document.getElementById("driverLocation").textContent = "-";
   document.getElementById("driverDepartement").textContent = "-";
 
-  // reset foto
+  // Reset foto
   document.getElementById("driverPhoto").src =
-    "https://i.postimg.cc/NMRDPgT5/GS-dispacer.jpg/120x80";
+    "https://i.postimg.cc/NMRDPgT5/GS-dispacer.jpg";
 
-  // reload seluruh dashboard
+  // Reload data
   loadTable();
 
+  // Reload chart
   loadTotalJamKerja();
   loadTotalJamLembur();
   loadTotalKonversi();
@@ -947,12 +1019,11 @@ function loadDriverBiodata(driverName) {
   document.getElementById("fleetCode").textContent = driver.fleet;
 
   document.getElementById("driverLocation").textContent = driver.lokasi;
-  
-   document.getElementById("driverDepartement").textContent =
-  driver.departement || "-";
+
+  document.getElementById("driverDepartement").textContent =
+    driver.departement || "-";
 
   document.getElementById("driverPhoto").src = driver.photo;
-  
 }
 let selectedDriver = null;
 

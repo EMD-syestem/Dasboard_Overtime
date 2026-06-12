@@ -688,7 +688,20 @@ function loadTotalKonversiLembur() {
          SORT DATA
       ====================== */
 
-      const sorted = Object.entries(map).sort((a, b) => b[1] - a[1]);
+      let sorted;
+
+      if (selectedDriver) {
+        // MODE HARIAN -> urut tanggal
+        sorted = Object.entries(map).sort((a, b) => {
+          const [da, ma, ya] = a[0].split("/");
+          const [db, mb, yb] = b[0].split("/");
+
+          return new Date(ya, ma - 1, da) - new Date(yb, mb - 1, db);
+        });
+      } else {
+        // MODE TOTAL DRIVER -> urut nilai terbesar
+        sorted = Object.entries(map).sort((a, b) => b[1] - a[1]);
+      }
 
       const labels = sorted.map((item) => item[0]);
       const values = sorted.map((item) => Number(item[1].toFixed(1)));
@@ -765,11 +778,19 @@ function loadTotalKonversiLembur() {
               }
             },
 
+            layout: {
+              padding: {
+                bottom: 25
+              }
+            },
+
             scales: {
               x: {
                 ticks: {
+                  autoSkip: false,
                   maxRotation: 45,
-                  minRotation: 45
+                  minRotation: 45,
+                  padding: 14
                 }
               },
 
@@ -1026,6 +1047,78 @@ function loadDriverBiodata(driverName) {
   document.getElementById("driverPhoto").src = driver.photo;
 }
 let selectedDriver = null;
+let activeGroup = "all";
+
+const fieldDrivers = [
+  "Aang Septiansyah",
+  "Ade Trio Saputra",
+  "Ahmad Safii",
+  "Andi Susilo",
+  "Andrian Abel Pratama",
+  "Bayu Hermansyah",
+  "Cristiandi Saputra",
+  "Deden krishna",
+  "Dedi Kurniawan.",
+  "Dimas Anggriawan",
+  "Dimas Kurnia Pamungkas",
+  "Dody Friady",
+  "Edo Irfan Nugraha",
+  "Eggi Fradana",
+  "Gusef Riadi",
+  "Hafid",
+  "Hamdani",
+  "Hari Bowo",
+  "Ilham Kholik",
+  "Kodin",
+  "Kuswara",
+  "Latif",
+  "Riko fristian",
+  "Muhammad Rivaldi",
+  "Niko Nirwana",
+  "Nur Fatonah",
+  "Nurhidayattullah",
+  "Oki",
+  "Primulyadi",
+  "Ravi Anggara",
+  "Rahmat Syukur Pratama",
+  "Restu Satrio",
+  "Reza Kurniadi",
+  "Said Ahmad Taufik",
+  "Sandro",
+  "Suryadi",
+  "Taufik Hidayat",
+  "Trisnanto",
+  "Usman Deva",
+  "Wahyu Ilham",
+  "Wilfridus Krisna Priadika",
+  "Audi muhar sakti",
+  "Andika saputra"
+];
+
+const zonaDrivers = [
+  "Aris Saputra",
+  "Ade Lutfi",
+  "Adi Subroto",
+  "Ardiansyah",
+  "Dedi kurniawan",
+  "Edi Nofrizal",
+  "Febri Yenita Pratama",
+  "Hendra Saputra",
+  "Iman Surya Priyatna",
+  "Irwanto",
+  "Juniyanto",
+  "Madelian Herianto",
+  "M Ridwan",
+  "M Hafiz",
+  "May Yudi Supratman",
+  "Rendy Septirianto",
+  "Rizkho Fadjar Mulyawan",
+  "Satri Mulyanak S",
+  "Satria Ariansyah",
+  "Suyadi",
+  "Syafarudin",
+  "Tri Darsa Saputra"
+];
 
 function loadDriverDashboard(driverName) {
   selectedDriver = driverName;
@@ -1069,16 +1162,26 @@ document.addEventListener("fullscreenchange", () => {
 function searchDriver() {
   const keyword = document.getElementById("driverSearch").value.toLowerCase();
 
-  const drivers = document.querySelectorAll(".driver-card");
+  const cards = document.querySelectorAll(".driver-card");
 
-  drivers.forEach((driver) => {
-    const name = driver.querySelector("span").textContent.toLowerCase();
+  cards.forEach((card) => {
+    const nama = card.querySelector("span").textContent.toLowerCase();
 
-    if (name.includes(keyword)) {
-      driver.style.display = "flex";
-    } else {
-      driver.style.display = "none";
+    const namaAsli = card.querySelector("span").textContent.trim();
+
+    let cocokGroup = true;
+
+    if (activeGroup === "field") {
+      cocokGroup = fieldDrivers.includes(namaAsli);
     }
+
+    if (activeGroup === "zona") {
+      cocokGroup = zonaDrivers.includes(namaAsli);
+    }
+
+    const cocokNama = nama.includes(keyword);
+
+    card.style.display = cocokNama && cocokGroup ? "flex" : "none";
   });
 }
 
@@ -1098,14 +1201,69 @@ function showAllDrivers() {
 
 function filterDriverGroup(group) {
   currentGroup = group;
+  activeGroup = group; // tambahkan di sini
 
   selectedDriver = null;
 
-  loadTable();
+  const cards = document.querySelectorAll(".driver-card");
 
+  cards.forEach((card) => {
+    const nama = card.querySelector("span").textContent.trim();
+
+    let show = false;
+
+    if (group === "field") {
+      show = fieldDrivers.includes(nama);
+    } else if (group === "zona") {
+      show = zonaDrivers.includes(nama);
+    } else {
+      show = true;
+    }
+
+    card.style.display = show ? "flex" : "none";
+  });
+
+  loadTable();
   loadTotalJamKerja();
   loadTotalJamLembur();
   loadTotalKonversi();
   loadTotalKonversiLembur();
   loadTotalDinasLuar();
+}
+function showAllDrivers() {
+
+  activeGroup = "all";
+  selectedDriver = null;
+
+  // RESET FILTER GLOBAL (INI PENTING)
+  currentZone = null;     // kalau ada filter zona
+  currentField = null;    // kalau ada filter field
+  currentGroup = null;    // kalau ada grup lain
+
+  // RESET UI BIODATA
+  document.getElementById("driverName").textContent = "-";
+  document.getElementById("driverBadge").textContent = "-";
+  document.getElementById("fleetCode").textContent = "-";
+  document.getElementById("driverLocation").textContent = "-";
+  document.getElementById("driverDepartement").textContent = "-";
+
+  document.getElementById("driverPhoto").src =
+    "https://i.postimg.cc/NMRDPgT5/GS-dispacer.jpg";
+
+  // RESET DATE FILTER
+  document.getElementById("startDate").value = "";
+  document.getElementById("endDate").value = "";
+
+  // TAMPILKAN SEMUA DRIVER CARD
+  document.querySelectorAll(".driver-card").forEach(card => {
+    card.style.display = "flex";
+  });
+
+ 
+  loadTable("all");  
+  loadTotalJamKerja("all");
+  loadTotalJamLembur("all");
+  loadTotalKonversi("all");
+  loadTotalKonversiLembur("all");
+  loadTotalDinasLuar("all");
 }

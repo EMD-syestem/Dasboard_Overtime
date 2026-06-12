@@ -19,7 +19,7 @@
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/highcharts-3d.js"></script>
   
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
 
 </head>
@@ -465,7 +465,9 @@
       </section>
 
       <section class="panel chart-jamkerja">
-        <h3>Chart Total Jam Kerja</h3>
+        <h3 id="jamKerjaHeader">
+          Chart Total Jam Kerja
+        </h3>
 
         <div class="jamkerja-scroll">
           <div id="jamKerjaChart"></div>
@@ -538,7 +540,9 @@
       </div>
       <!-- CHART LEMBUR -->
       <section class="panel chart-lembur">
-        <h3>Chart Total Jam Lembur</h3>
+        <h3 id="jamLemburHeader">
+          Chart Total Jam Lembur
+        </h3>
 
         <div class="chart-scroll">
           <canvas id="jamLemburChart"></canvas>
@@ -547,7 +551,10 @@
 
       <!-- CHART KONVERSI -->
       <section class="panel chart-konversi">
-        <h3>Chart Total Konversi Lembur</h3>
+        <h3 id="konversiHeader">
+          Chart Total Konversi Lembur
+        </h3>
+
         <canvas id="konversiChart"></canvas>
       </section>
 

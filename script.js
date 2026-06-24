@@ -288,7 +288,7 @@ function loadTotalJamLembur() {
         data.forEach((row) => {
           const tanggal = parseTanggal(row[1]);
 
-          const jamLembur = parseFloat(row[3]) || 0;
+          const jamLembur = parseFloat(row[4]) || 0;
 
           if (!tanggal) return;
 
@@ -306,7 +306,7 @@ function loadTotalJamLembur() {
         data.forEach((row) => {
           const nama = (row[0] || "").trim();
 
-          const jamLembur = parseFloat(row[3]) || 0;
+          const jamLembur = parseFloat(row[4]) || 0;
 
           if (!nama) return;
 

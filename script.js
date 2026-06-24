@@ -192,7 +192,7 @@ function loadTotalJamKerja() {
   const roleParam = currentGroup === "all" ? "" : `&role=${currentGroup}`;
 
   fetch(
-    `https://script.google.com/macros/s/AKfycbyxB_Bo2GNbb3EMc2JcPuUNmHHXMCSZndSjGDHiQFJ5R6GW49BxJsdjDCdcgtliZAE/exec?action=read${roleParam}`
+    `https://script.google.com/macros/s/AKfycbytyecx9KV5KOwEdIQT5758jJquiFfHFbYcTDVEe9Qz_acNhMxCMEcA6tCfW9Gk-JZfQQ/exec?action=read${roleParam}`
   )
     .then((res) => res.json())
     .then((data) => {
@@ -266,7 +266,7 @@ function loadTotalJamLembur() {
   const roleParam = currentGroup === "all" ? "" : `&role=${currentGroup}`;
 
   fetch(
-    `https://script.google.com/macros/s/AKfycbyxB_Bo2GNbb3EMc2JcPuUNmHHXMCSZndSjGDHiQFJ5R6GW49BxJsdjDCdcgtliZAE/exec?action=read${roleParam}`
+    `https://script.google.com/macros/s/AKfycbytyecx9KV5KOwEdIQT5758jJquiFfHFbYcTDVEe9Qz_acNhMxCMEcA6tCfW9Gk-JZfQQ/exec?action=read${roleParam}`
   )
     .then((res) => res.json())
     .then((data) => {
@@ -475,7 +475,7 @@ function loadTotalKonversi() {
   const roleParam = currentGroup === "all" ? "" : `&role=${currentGroup}`;
 
   fetch(
-    `https://script.google.com/macros/s/AKfycbyxB_Bo2GNbb3EMc2JcPuUNmHHXMCSZndSjGDHiQFJ5R6GW49BxJsdjDCdcgtliZAE/exec?action=read${roleParam}`
+    `https://script.google.com/macros/s/AKfycbytyecx9KV5KOwEdIQT5758jJquiFfHFbYcTDVEe9Qz_acNhMxCMEcA6tCfW9Gk-JZfQQ/exec?action=read${roleParam}`
   )
     .then((res) => res.json())
     .then((data) => {
@@ -558,7 +558,7 @@ function loadTotalDinasLuar() {
   const roleParam = currentGroup === "all" ? "" : `&role=${currentGroup}`;
 
   fetch(
-    `https://script.google.com/macros/s/AKfycbyxB_Bo2GNbb3EMc2JcPuUNmHHXMCSZndSjGDHiQFJ5R6GW49BxJsdjDCdcgtliZAE/exec?action=readDinasLuar${roleParam}`
+    `https://script.google.com/macros/s/AKfycbytyecx9KV5KOwEdIQT5758jJquiFfHFbYcTDVEe9Qz_acNhMxCMEcA6tCfW9Gk-JZfQQ/exec?action=readDinasLuar${roleParam}`
   )
     .then((res) => {
       if (!res.ok) {
@@ -646,7 +646,7 @@ function loadTotalKonversiLembur() {
   const roleParam = currentGroup === "all" ? "" : `&role=${currentGroup}`;
 
   fetch(
-    `https://script.google.com/macros/s/AKfycbyxB_Bo2GNbb3EMc2JcPuUNmHHXMCSZndSjGDHiQFJ5R6GW49BxJsdjDCdcgtliZAE/exec?action=read${roleParam}`
+    `https://script.google.com/macros/s/AKfycbytyecx9KV5KOwEdIQT5758jJquiFfHFbYcTDVEe9Qz_acNhMxCMEcA6tCfW9Gk-JZfQQ/exec?action=read${roleParam}`
   )
     .then((res) => res.json())
     .then((data) => {
@@ -907,7 +907,7 @@ function loadTableFromData(data) {
 
 function loadAllData() {
   fetch(
-    "https://script.google.com/macros/s/AKfycbyxB_Bo2GNbb3EMc2JcPuUNmHHXMCSZndSjGDHiQFJ5R6GW49BxJsdjDCdcgtliZAE/exec?action=read"
+    "https://script.google.com/macros/s/AKfycbytyecx9KV5KOwEdIQT5758jJquiFfHFbYcTDVEe9Qz_acNhMxCMEcA6tCfW9Gk-JZfQQ/exec?action=read"
   )
     .then((res) => res.json())
     .then((data) => {
@@ -989,7 +989,7 @@ function loadTable() {
   const roleParam = currentGroup === "all" ? "" : `&role=${currentGroup}`;
 
   fetch(
-    `https://script.google.com/macros/s/AKfycbyxB_Bo2GNbb3EMc2JcPuUNmHHXMCSZndSjGDHiQFJ5R6GW49BxJsdjDCdcgtliZAE/exec?action=read${roleParam}`
+    `https://script.google.com/macros/s/AKfycbytyecx9KV5KOwEdIQT5758jJquiFfHFbYcTDVEe9Qz_acNhMxCMEcA6tCfW9Gk-JZfQQ/exec?action=read${roleParam}`
   )
     .then((res) => res.json())
     .then((data) => {
@@ -1006,7 +1006,7 @@ function loadTable() {
 document.addEventListener("DOMContentLoaded", loadTable);
 
 const API_URL =
-  "https://script.google.com/macros/s/AKfycbyxB_Bo2GNbb3EMc2JcPuUNmHHXMCSZndSjGDHiQFJ5R6GW49BxJsdjDCdcgtliZAE/exec";
+  "https://script.google.com/macros/s/AKfycbytyecx9KV5KOwEdIQT5758jJquiFfHFbYcTDVEe9Qz_acNhMxCMEcA6tCfW9Gk-JZfQQ/exec";
 
 let biodataCache = [];
 
